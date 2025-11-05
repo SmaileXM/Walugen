@@ -1,0 +1,113 @@
+#include "../msg/log.h"
+#include "../base/val.h"
+#include "../msg/error.h"
+#include "../msg/warn.h"
+#include "../func/def.h"
+#include "backend/backends.h"
+#include "backend/wallpaper/wallbackends.h"
+#include "parser.h"
+
+#include <string.h>
+#include <stdlib.h>
+
+int parser(int argc, char **argv)
+{
+    struct Arguments;
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0)
+        {
+            help_msg();
+            exit(EXIT_SUCCESS);
+        }
+        else if (strcmp(argv[i], "-b") == 0 || strcmp(argv[i], "--backend") == 0)
+        {
+            if (i + 1 < argc)
+            {
+                Arguments.backend = argv[i + 1];
+                i++;
+            }
+            else
+            {
+                w_error(EXIT_FAILURE, ERROR_NO_BACKEND);
+            }
+        }
+        else if (strcmp(argv[i], "-w") == 0 || strcmp(argv[i], "--wallpaper") == 0)
+        {
+            if (i + 1 < argc)
+            {
+                Arguments.wallpaper_backend = argv[i + 1];
+                i++;
+            }
+            else 
+            {
+                w_error(EXIT_FAILURE, ERROR_NO_WALL_BACKEND);
+            }
+        }
+        else if (strcmp(argv[i], "-i") == 0 || strcmp(argv[i], "--input") == 0)
+        {
+            if (i + 1 < argc)
+            {
+                Arguments.path = argv[i + 1];
+                i++;
+            }
+            else 
+            {
+                w_error(EXIT_FAILURE, ERROR_NO_PATH);
+            }
+        }
+    }
+    validation();
+    return 0;
+}
+
+int validation(void)
+{
+    struct Arguments;
+    int rls = path_check(Arguments.path);
+
+    if (rls == -1) w_error(EXIT_FAILURE, ERROR_FILE_NOT_FOUND);
+    if (strcmp(Arguments.backend, "pywal") == 0)
+    {
+        if (rls == 1) pywal_colors_update(Arguments.path);
+        else if (rls == 2) return 0;//pywal_random_colors_update(Arguments.path);
+    }
+    else if (strcmp(Arguments.backend, "hellwal") == 0)
+    {
+        if (rls == 1) hellwal_colors_update(Arguments.path);
+        else if (rls == 2) hellwal_colors_update(Arguments.path);
+    }
+    else if (strcmp(Arguments.backend, "no") == 0) w_warn(WARN_IGNOR_BACKEND);
+    else w_error(EXIT_FAILURE, ERROR_UNKNOWN_BACKEND);
+
+    if (strcmp(Arguments.wallpaper_backend, "swww") == 0)
+    {
+        if (rls == 1)
+        {
+            swww_wallpaper_update(Arguments.path);
+            exit(EXIT_SUCCESS);
+        }
+        else if (rls == 2)
+        {
+            //swww_random_wallpaper_update(Arguments.path);
+            exit(EXIT_SUCCESS);
+        }
+    }
+    else if (strcmp(Arguments.wallpaper_backend, "swaybg") == 0)
+    {
+        if (rls == 1)
+        {
+            swaybg_wallpaper_update(Arguments.path);
+            exit(EXIT_SUCCESS);
+        }
+        else if (rls == 2)
+        {
+            //swaybg_random_wallpaper_update(Arguments.path);
+            exit(EXIT_SUCCESS);
+        }
+    }
+    else if (strcmp(Arguments.wallpaper_backend, "no") == 0) w_warn(WARN_IGNOR_WALLPAPER_BACKEND);
+    else w_error(EXIT_FAILURE, ERROR_UNKNOWN_WALLPAPER_BACKEND);
+    return 0;
+}
+
