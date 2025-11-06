@@ -7,7 +7,7 @@
 ```bash
 git clone https://github.com/SmaileXM/Walugen.git
 cd Walugen
-cmake -S . -B build | make -C build
+cmake -S . -B build && make -C build
 ```
 ## Using 
 
