@@ -81,7 +81,7 @@ int validation(void)
         if (rls == 1) hellwal_colors_update(Arguments.path);
         else if (rls == 2) hellwal_colors_update(Arguments.path);
     }
-    else if (strcmp(Arguments.backend, "no") == 0) w_warn(WARN_IGNOR_BACKEND);
+    else if (strcmp(Arguments.backend, "null") == 0) w_warn(WARN_IGNOR_BACKEND);
     else w_error(EXIT_FAILURE, ERROR_UNKNOWN_BACKEND);
 
     if (strcmp(Arguments.wallpaper_backend, "swww") == 0)
@@ -110,7 +110,7 @@ int validation(void)
             exit(EXIT_SUCCESS);
         }
     }
-    else if (strcmp(Arguments.wallpaper_backend, "no") == 0) w_warn(WARN_IGNOR_WALLPAPER_BACKEND);
+    else if (strcmp(Arguments.wallpaper_backend, "null") == 0) w_warn(WARN_IGNOR_WALLPAPER_BACKEND);
     else w_error(EXIT_FAILURE, ERROR_UNKNOWN_WALLPAPER_BACKEND);
     return 0;
 }

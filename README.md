@@ -32,16 +32,16 @@ walugen -i path/to/wallpaper -b pywal -w swww
 ```
 >> Flags can be written in any order.
 
-#### To skip any action, you can use the "no" keyword when specifying backends.
+#### To skip any action, you can use the "null" keyword when specifying backends.
 
 Examples:
 ```bash
-walugen -i wallpaper -b no -w swww 
+walugen -i wallpaper -b null -w swww 
 ```
 > In this case, colors will not be applied.
 
 ```bash
-walugen -i wallpaper -b pywal -w no
+walugen -i wallpaper -b pywal -w null
 ```
 > In this case, the wallpaper will not be used.
 

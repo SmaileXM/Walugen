@@ -8,11 +8,11 @@
 #define MSG_TYPE_USAGE "usage"
 
 #define HELP_MSG    "Walugen v0.0.4 By SmaileXM\n"\
-                    "\n-h,--help                         Print help"\
-                    "\n-u,--usage                        Print usage"\
-                    "\n-b,--backend <backend or no>      Flag for specifying the backend"\
-                    "\n-w,--wallbackend <backend or no>  Flag for specifying the wallpaper backend"\
-                    "\n-i,--input <path>                 Flag for specifying the path"\
+                    "\n-h,--help                           Print help"\
+                    "\n-u,--usage                          Print usage"\
+                    "\n-b,--backend <backend or null>      Flag for specifying the backend"\
+                    "\n-w,--wallbackend <backend or null>  Flag for specifying the wallpaper backend"\
+                    "\n-i,--input <path>                   Flag for specifying the path"\
                     "\n\nSource code: https://github.com/SmaileXM/Walugen.git"\
                     "\nVersion data: 2025.11.06\n"
 
