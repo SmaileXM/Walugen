@@ -19,7 +19,7 @@ int swww_wallpaper_update(const char *path)
 
     if (system(cmd) != 0) w_error(EXIT_FAILURE, ERROR_COLORS_UPDATE);
 
-    w_info(INFO_COLORS_UPDATE);
+    w_info(INFO_WALLPAPER_UPDATE);
     free(cmd);
     return 0;
 }

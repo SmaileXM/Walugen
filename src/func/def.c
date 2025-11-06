@@ -39,10 +39,10 @@ int program_testing(const char *prg)
 
     if (system(cmd) != 0) 
     {
-        printf("%s%s %s %s: %s\n", LOG_ERROR_COLOR, LOG_ERROR_TXT, LOG_NAME_PROG, prg, ERROR_PROGRAM_NOT_FOUND);
+        w_nerror(ERROR_PROGRAM_NOT_FOUND, prg);
         return 1;
     }
-    printf("%s %s %s: %s", LOG_INFO_TXT, LOG_NAME_PROG, prg, INFO_PROGRAM_FOUND);
+    w_info(INFO_PROGRAM_FOUND, prg);
     free(cmd);
     return 0;
 }

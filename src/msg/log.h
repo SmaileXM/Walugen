@@ -16,9 +16,10 @@
                     "\n\nSource code: https://github.com/SmaileXM/Walugen.git"\
                     "\nVersion data: 2025.11.06\n"
 
-int w_error(int val, const char *fmt);
-void w_warn(const char *fmt);
-void w_info(const char *fmt);
+int w_error(int val, const char *fmt, ...);
+void w_nerror(const char *fmt, ...);
+void w_warn(const char *fmt, ...);
+void w_info(const char *fmt, ...);
 
 void msg(const char *type_print);
 
