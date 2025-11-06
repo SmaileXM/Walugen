@@ -14,7 +14,7 @@ SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${FLAGS}")
 set(PROJECT_BINARY_DIR ../bin)
 
 set(SOURCE 
-    src/main.c
+    src/init.c
     src/base/parser.c
     src/base/backend/pywal.c
     src/base/backend/hellwal.c

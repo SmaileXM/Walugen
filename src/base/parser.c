@@ -57,7 +57,6 @@ int parser(int argc, char **argv)
             }
         }
     }
-    validation();
     return 0;
 }
 
