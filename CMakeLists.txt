@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 project(walugen
-        VERSION 0.0.3
+        VERSION 0.0.4
         LANGUAGES C
         DESCRIPTION "Expanding the possibilities for themes"
         HOMEPAGE_URL "https://github.com/SmaileXM/Walugen")

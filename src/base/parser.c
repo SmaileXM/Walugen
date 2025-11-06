@@ -17,7 +17,12 @@ int parser(int argc, char **argv)
     {
         if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0)
         {
-            help_msg();
+            msg(MSG_TYPE_HELP);
+            exit(EXIT_SUCCESS);
+        }
+        else if (strcmp(argv[i], "-u") == 0 || strcmp(argv[i], "--usage") == 0)
+        {
+            msg(MSG_TYPE_USAGE);
             exit(EXIT_SUCCESS);
         }
         else if (strcmp(argv[i], "-b") == 0 || strcmp(argv[i], "--backend") == 0)

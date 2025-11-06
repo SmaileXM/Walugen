@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int w_error(int val, const char *fmt)
 {
@@ -27,7 +28,14 @@ void w_info(const char *fmt)
     printf("%s %s %s\n", LOG_INFO_TXT, LOG_NAME_PROG, fmt);
 }
 
-void help_msg(void)
+void msg(const char *type_print)
 {
-    printf(HELP_MSG);
+    if (strcmp(type_print, MSG_TYPE_HELP) == 0)
+        printf(HELP_MSG);
+
+    else if (strcmp(type_print, MSG_TYPE_USAGE) == 0)
+        printf(USAGE_MSG);
+
+    else
+        printf(HELP_MSG);
 }
