@@ -23,7 +23,7 @@ walugen -b pywal # or hellwal
 
 #### To specify the backend for applying wallpapers, use the -w flag.
 ```bash
-walugen -w swww # or swww
+walugen -w swww # or swaybg
 ```
 
 #### Specify the path to the wallpaper.
