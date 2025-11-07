@@ -1,11 +1,17 @@
 #ifndef LOG_H
 #define LOG_H
 
-#define LOG_NAME_PROG "[Walugen]:"
+#define NO_COLOR "\e[37m"
+
 #define USAGE_MSG "Usage: walugen [-h or --help] [-b or --backend] [-w or --wallpaper] [-i or --input] path\n"
 
 #define MSG_TYPE_HELP "help"
 #define MSG_TYPE_USAGE "usage"
+
+#define WALLPAPER_SECT "wallpaper"
+#define COLORS_SECT "colors"
+#define INPUT_SECT "input"
+#define TEST_SECT "testing"
 
 #define HELP_MSG    "Walugen v0.0.4 By SmaileXM\n"\
                     "\n-h,--help                           Print help"\
@@ -16,10 +22,10 @@
                     "\n\nSource code: https://github.com/SmaileXM/Walugen.git"\
                     "\nVersion data: 2025.11.06\n"
 
-int w_error(int val, const char *fmt, ...);
-void w_nerror(const char *fmt, ...);
-void w_warn(const char *fmt, ...);
-void w_info(const char *fmt, ...);
+int w_error(int val, const char *mdl, const char *fmt, ...);
+void w_nerror(const char *mdl, const char *fmt, ...);
+void w_warn(const char *mdl, const char *fmt, ...);
+void w_info(const char *mdl, const char *fmt, ...);
 
 void msg(const char *type_print);
 

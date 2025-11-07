@@ -34,7 +34,7 @@ int parser(int argc, char **argv)
             }
             else
             {
-                w_error(EXIT_FAILURE, ERROR_NO_BACKEND);
+                w_error(EXIT_FAILURE, COLORS_SECT ,ERROR_NO_BACKEND);
             }
         }
         else if (strcmp(argv[i], "-w") == 0 || strcmp(argv[i], "--wallpaper") == 0)
@@ -46,7 +46,7 @@ int parser(int argc, char **argv)
             }
             else 
             {
-                w_error(EXIT_FAILURE, ERROR_NO_WALL_BACKEND);
+                w_error(EXIT_FAILURE, WALLPAPER_SECT,ERROR_NO_WALL_BACKEND);
             }
         }
         else if (strcmp(argv[i], "-i") == 0 || strcmp(argv[i], "--input") == 0)
@@ -58,7 +58,7 @@ int parser(int argc, char **argv)
             }
             else 
             {
-                w_error(EXIT_FAILURE, ERROR_NO_PATH);
+                w_error(EXIT_FAILURE, INPUT_SECT, ERROR_NO_PATH);
             }
         }
     }
@@ -70,7 +70,7 @@ int validation(void)
     struct Arguments;
     int rls = path_check(Arguments.path);
 
-    if (rls == -1) w_error(EXIT_FAILURE, ERROR_FILE_NOT_FOUND);
+    if (rls == -1) w_error(EXIT_FAILURE, TEST_SECT, ERROR_FILE_NOT_FOUND);
     if (strcmp(Arguments.backend, "pywal") == 0)
     {
         if (rls == 1) pywal_colors_update(Arguments.path);
@@ -81,8 +81,8 @@ int validation(void)
         if (rls == 1) hellwal_colors_update(Arguments.path);
         else if (rls == 2) hellwal_colors_update(Arguments.path);
     }
-    else if (strcmp(Arguments.backend, "null") == 0) w_warn(WARN_IGNOR_BACKEND);
-    else w_error(EXIT_FAILURE, ERROR_UNKNOWN_BACKEND);
+    else if (strcmp(Arguments.backend, "null") == 0) w_warn(COLORS_SECT, WARN_IGNOR_BACKEND);
+    else w_error(EXIT_FAILURE, COLORS_SECT, ERROR_UNKNOWN_BACKEND);
 
     if (strcmp(Arguments.wallpaper_backend, "swww") == 0)
     {
@@ -110,8 +110,8 @@ int validation(void)
             exit(EXIT_SUCCESS);
         }
     }
-    else if (strcmp(Arguments.wallpaper_backend, "null") == 0) w_warn(WARN_IGNOR_WALLPAPER_BACKEND);
-    else w_error(EXIT_FAILURE, ERROR_UNKNOWN_WALLPAPER_BACKEND);
+    else if (strcmp(Arguments.wallpaper_backend, "null") == 0) w_warn(WALLPAPER_SECT, WARN_IGNOR_WALLPAPER_BACKEND);
+    else w_error(EXIT_FAILURE, WALLPAPER_SECT, ERROR_UNKNOWN_WALLPAPER_BACKEND);
     return 0;
 }
 

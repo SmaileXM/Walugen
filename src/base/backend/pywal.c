@@ -17,9 +17,9 @@ int pywal_colors_update(const char *path)
     
     snprintf(cmd, buf, "wal -i %s > /dev/null", path);
 
-    if (system(cmd) != 0) w_error(EXIT_FAILURE, ERROR_COLORS_UPDATE);
+    if (system(cmd) != 0) w_error(EXIT_FAILURE, COLORS_SECT, ERROR_COLORS_UPDATE);
 
-    w_info(INFO_COLORS_UPDATE);
+    w_info(COLORS_SECT, INFO_COLORS_UPDATE);
     free(cmd);
     return 0;
 }

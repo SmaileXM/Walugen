@@ -39,10 +39,10 @@ int program_testing(const char *prg)
 
     if (system(cmd) != 0) 
     {
-        w_nerror(ERROR_PROGRAM_NOT_FOUND, prg);
+        w_nerror(TEST_SECT, ERROR_PROGRAM_NOT_FOUND, prg);
         return 1;
     }
-    w_info(INFO_PROGRAM_FOUND, prg);
+    w_info(TEST_SECT, INFO_PROGRAM_FOUND, prg);
     free(cmd);
     return 0;
 }

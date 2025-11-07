@@ -8,13 +8,13 @@
 #include <stdio.h>
 #include <string.h>
 
-int w_error(int val, const char *fmt, ...)
+int w_error(int val, const char *mdl, const char *fmt, ...)
 {
     if (val > EXIT_FAILURE)
     {
         return 1;
     }
-    printf("%s%s %s ", LOG_ERROR_COLOR, LOG_ERROR_TXT, LOG_NAME_PROG);
+    printf("[%sE%s] %s%s%s: ", LOG_ERROR_COLOR, NO_COLOR, LOG_ERROR_COLOR, mdl, NO_COLOR);
     va_list argl;
     va_start(argl, fmt);
     vprintf(fmt, argl);
@@ -23,26 +23,27 @@ int w_error(int val, const char *fmt, ...)
     return 0;
 }
 
-void w_nerror(const char *fmt, ...)
+void w_nerror(const char *mdl, const char *fmt, ...)
 {
+    printf("[%sE%s] %s%s%s: ", LOG_ERROR_COLOR, NO_COLOR, LOG_ERROR_COLOR, mdl, NO_COLOR);
     va_list argl;
     va_start(argl, fmt);
     vprintf(fmt, argl);
     va_end(argl);
 }
 
-void w_warn(const char *fmt, ...)
+void w_warn(const char *mdl, const char *fmt, ...)
 {
-    printf("%s%s %s ", LOG_WARN_COLOR, LOG_WARN_TXT, LOG_NAME_PROG);
+    printf("[%sW%s] %s%s%s: ", LOG_WARN_COLOR, NO_COLOR, LOG_WARN_COLOR, mdl, NO_COLOR);
     va_list argl;
     va_start(argl, fmt);
     vprintf(fmt, argl);
     va_end(argl);
 }
 
-void w_info(const char *fmt, ...)
+void w_info(const char *mdl, const char *fmt, ...)
 {
-    printf("%s %s ", LOG_INFO_TXT, LOG_NAME_PROG);
+    printf("[%sI%s] %s%s%s: ", LOG_INFO_COLOR, NO_COLOR, LOG_INFO_COLOR, mdl, NO_COLOR);
     va_list argl;
     va_start(argl, fmt);
     vprintf(fmt, argl);

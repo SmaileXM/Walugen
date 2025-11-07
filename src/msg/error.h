@@ -1,7 +1,6 @@
 #ifndef ERROR_H
 #define ERROR_H
 
-#define LOG_ERROR_TXT "[ERROR]"
 #define LOG_ERROR_COLOR "\e[1;31m"
 
 //#define ERROR_ARGS ""
