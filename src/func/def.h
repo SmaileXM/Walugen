@@ -3,5 +3,6 @@
 
 int path_check(const char *path);
 int program_testing(const char *prg);
+int systemv(const char *cmd, ...);
 
 #endif

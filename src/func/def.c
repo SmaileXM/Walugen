@@ -4,11 +4,13 @@
 #include "../msg/log.h"
 
 #include <stdio.h>
+#include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
 int path_check(const char *path)
 {
@@ -35,14 +37,30 @@ int program_testing(const char *prg)
 
     if (access(prg, F_OK) == 0) return 1;
 
-    snprintf(cmd, buf, "which %s > /dev/null", prg);
-
-    if (system(cmd) != 0) 
+    if (systemv("which %s > /dev/null", prg) != 0) 
     {
         w_nerror(TEST_SECT, ERROR_PROGRAM_NOT_FOUND, prg);
         return 1;
     }
     w_info(TEST_SECT, INFO_PROGRAM_FOUND, prg);
     free(cmd);
+    return 0;
+}
+
+int systemv(const char *cmd, ...)
+{
+    size_t len = strlen(cmd);
+    size_t buf = len + 40;
+    char *cmd_buf = malloc(buf);
+
+    va_list arg;
+    va_start(arg, cmd);
+    vsnprintf(cmd_buf, buf, cmd, arg);
+    va_end(arg);
+
+    if (system(cmd_buf) != 0)
+        return 1;
+
+    free(cmd_buf);
     return 0;
 }

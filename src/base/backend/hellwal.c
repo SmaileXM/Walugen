@@ -13,11 +13,11 @@ int hellwal_colors_update(const char *path)
     size_t buf = strlen(path) + 50;
     char *cmd = malloc(buf);
 
-    if (program_testing("hellwal") != 0) return 1;
+    if (program_testing("hellwal") != 0) 
+        return 1;
 
-    snprintf(cmd, buf, "hellwal -i %s > /dev/null", path);
-
-    if (system(cmd) != 0) w_error(EXIT_FAILURE, COLORS_SECT, ERROR_COLORS_UPDATE);
+    if (systemv("hellwal -i %s > /dev/null", path) != 0) 
+        w_error(EXIT_FAILURE, COLORS_SECT, ERROR_COLORS_UPDATE);
 
     w_info(COLORS_SECT, INFO_COLORS_UPDATE);
     free(cmd);
@@ -29,11 +29,11 @@ int hellwal_random_colors_update(const char *path)
     size_t buf = strlen(path) + 50;
     char *cmd = malloc(buf);
 
-    if (program_testing("hellwal") != 0) return 1;
+    if (program_testing("hellwal") != 0) 
+        return 1;
 
-    snprintf(cmd, buf, "hellwal -i %s --random > /dev/null", path);
-
-    if (system(cmd) != 0) w_error(EXIT_FAILURE, COLORS_SECT, ERROR_COLORS_UPDATE);
+    if (systemv("hellwal -i %s --random > /dev/null", path) != 0) 
+        w_error(EXIT_FAILURE, COLORS_SECT, ERROR_COLORS_UPDATE);
 
     w_info(COLORS_SECT, INFO_COLORS_UPDATE);
     free(cmd);
