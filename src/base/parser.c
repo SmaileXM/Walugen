@@ -2,6 +2,7 @@
 #include "../base/val.h"
 #include "../msg/error.h"
 #include "../msg/warn.h"
+#include "../msg/info.h"
 #include "../func/def.h"
 #include "../func/reload.h"
 #include "backend/backends.h"
@@ -83,6 +84,8 @@ int validation(void)
 
     if (path_testing == -1) 
         w_error(EXIT_FAILURE, TEST_SECT, ERROR_FILE_NOT_FOUND);
+
+    w_info(WALLPAPER_SECT, INFO_PATH_SET, Arguments.path);
 
     if (Arguments.backend == NULL || strcmp(Arguments.backend, "null") == 0) 
         w_warn(COLORS_SECT, WARN_IGNOR_BACKEND);

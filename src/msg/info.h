@@ -6,5 +6,6 @@
 #define INFO_COLORS_UPDATE "Colors updated!\n"
 #define INFO_WALLPAPER_UPDATE "Wallpaper updated!\n"
 #define INFO_RELOADING_WAYBAR "Waybar relaunched\n"
+#define INFO_PATH_SET "Path set: %s\n"
 
 #endif
