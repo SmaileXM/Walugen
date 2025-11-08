@@ -51,4 +51,4 @@ walugen -i wallpaper -b pywal -w null
 
 **random wallpaper** - Support for random wallpapers from a specified directory with file extension checking.
 
-**Improved feature skipping** - Improved the system for skipping functions without explicitly specifying "no".
+**[SUCCESS]** **Improved feature skipping** - Improved the system for skipping functions without explicitly specifying "no".

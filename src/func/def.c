@@ -10,7 +10,6 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <sys/wait.h>
 
 int path_check(const char *path)
 {

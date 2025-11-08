@@ -70,8 +70,13 @@ int validation(void)
     struct Arguments;
     int rls = path_check(Arguments.path);
 
-    if (rls == -1) w_error(EXIT_FAILURE, TEST_SECT, ERROR_FILE_NOT_FOUND);
-    if (strcmp(Arguments.backend, "pywal") == 0)
+    if (rls == -1) 
+        w_error(EXIT_FAILURE, TEST_SECT, ERROR_FILE_NOT_FOUND);
+
+    if (Arguments.backend == NULL || strcmp(Arguments.backend, "null") == 0) 
+        w_warn(COLORS_SECT, WARN_IGNOR_BACKEND);
+
+    else if (strcmp(Arguments.backend, "pywal") == 0)
     {
         if (rls == 1) pywal_colors_update(Arguments.path);
         else if (rls == 2) return 0;//pywal_random_colors_update(Arguments.path);
@@ -79,12 +84,14 @@ int validation(void)
     else if (strcmp(Arguments.backend, "hellwal") == 0)
     {
         if (rls == 1) hellwal_colors_update(Arguments.path);
-        else if (rls == 2) hellwal_colors_update(Arguments.path);
+        else if (rls == 2) hellwal_random_colors_update(Arguments.path);
     }
-    else if (strcmp(Arguments.backend, "null") == 0) w_warn(COLORS_SECT, WARN_IGNOR_BACKEND);
     else w_error(EXIT_FAILURE, COLORS_SECT, ERROR_UNKNOWN_BACKEND);
 
-    if (strcmp(Arguments.wallpaper_backend, "swww") == 0)
+    if (Arguments.wallpaper_backend == NULL || strcmp(Arguments.wallpaper_backend, "null") == 0) 
+        w_warn(WALLPAPER_SECT, WARN_IGNOR_WALLPAPER_BACKEND);
+    
+    else if (strcmp(Arguments.wallpaper_backend, "swww") == 0)
     {
         if (rls == 1)
         {
@@ -110,7 +117,6 @@ int validation(void)
             exit(EXIT_SUCCESS);
         }
     }
-    else if (strcmp(Arguments.wallpaper_backend, "null") == 0) w_warn(WALLPAPER_SECT, WARN_IGNOR_WALLPAPER_BACKEND);
     else w_error(EXIT_FAILURE, WALLPAPER_SECT, ERROR_UNKNOWN_WALLPAPER_BACKEND);
     return 0;
 }
