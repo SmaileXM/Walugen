@@ -3,7 +3,7 @@
 
 #define NO_COLOR "\e[37m"
 
-#define USAGE_MSG "Usage: walugen [-h or --help] [-b or --backend] [-w or --wallpaper] [-i or --input] path\n"
+#define USAGE_MSG "Usage: walugen [-h or --help] [-r or --reload] [-b or --backend] [-w or --wallpaper] [-i or --input] path\n"
 
 #define MSG_TYPE_HELP "help"
 #define MSG_TYPE_USAGE "usage"
@@ -12,6 +12,7 @@
 #define COLORS_SECT "colors"
 #define INPUT_SECT "input"
 #define TEST_SECT "testing"
+#define RELOAD_SECT "reloading"
 
 #define HELP_MSG    "Walugen v0.0.4 By SmaileXM\n"\
                     "\n-h,--help                           Print help"\
@@ -19,8 +20,9 @@
                     "\n-b,--backend <backend or null>      Flag for specifying the backend"\
                     "\n-w,--wallbackend <backend or null>  Flag for specifying the wallpaper backend"\
                     "\n-i,--input <path>                   Flag for specifying the path"\
+                    "\n-r,--reload                         Flag to reload the waybar (Later for other things)"\
                     "\n\nSource code: https://github.com/SmaileXM/Walugen.git"\
-                    "\nVersion data: 2025.11.06\n"
+                    "\nVersion data: 2025.11.08\n"
 
 int w_error(int val, const char *mdl, const char *fmt, ...);
 void w_nerror(const char *mdl, const char *fmt, ...);

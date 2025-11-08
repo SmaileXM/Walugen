@@ -21,6 +21,7 @@ set(SOURCE
     src/base/backend/wallpaper/swww.c
     src/base/backend/wallpaper/swaybg.c
     src/func/def.c
+    src/func/reload.c
     src/msg/log.c)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})

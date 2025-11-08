@@ -3,6 +3,7 @@
 #include "../msg/error.h"
 #include "../msg/warn.h"
 #include "../func/def.h"
+#include "../func/reload.h"
 #include "backend/backends.h"
 #include "backend/wallpaper/wallbackends.h"
 #include "parser.h"
@@ -34,6 +35,7 @@ int parser(int argc, char **argv)
             }
             else
             {
+                msg(MSG_TYPE_USAGE);
                 w_error(EXIT_FAILURE, COLORS_SECT ,ERROR_NO_BACKEND);
             }
         }
@@ -46,6 +48,7 @@ int parser(int argc, char **argv)
             }
             else 
             {
+                msg(MSG_TYPE_USAGE);
                 w_error(EXIT_FAILURE, WALLPAPER_SECT,ERROR_NO_WALL_BACKEND);
             }
         }
@@ -58,8 +61,16 @@ int parser(int argc, char **argv)
             }
             else 
             {
+                msg(MSG_TYPE_USAGE);
                 w_error(EXIT_FAILURE, INPUT_SECT, ERROR_NO_PATH);
             }
+        }
+        else if (strcmp(argv[i], "-r") == 0 || strcmp(argv[i], "--reload") == 0)
+            Arguments.reload = 1;
+        else
+        {
+            msg(MSG_TYPE_USAGE);
+            w_error(EXIT_FAILURE, TEST_SECT, ERROR_UNKNOWN_ARGUMENT);
         }
     }
     return 0;
@@ -118,6 +129,10 @@ int validation(void)
         }
     }
     else w_error(EXIT_FAILURE, WALLPAPER_SECT, ERROR_UNKNOWN_WALLPAPER_BACKEND);
+
+    if (Arguments.reload == 1)
+        reloading();
+
     return 0;
 }
 

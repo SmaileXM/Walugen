@@ -10,6 +10,7 @@
 #define ERROR_FILE_NOT_FOUND "File or directory not found\n"
 #define ERROR_UNKNOWN_BACKEND "Unknown backend. Please enter hellwal or pywal\n"
 #define ERROR_UNKNOWN_WALLPAPER_BACKEND "Unknown wallpaper backend. Please enter swww or swaybg\n"
+#define ERROR_UNKNOWN_ARGUMENT "Unknown argument\n"
 #define ERROR_PROGRAM_NOT_FOUND "Program %s not found\n"
 #define ERROR_COLORS_UPDATE "Failed to update colors\n"
 #define ERROR_OPEN_DIR "Failed to open directory\n"

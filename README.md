@@ -45,6 +45,12 @@ walugen -i wallpaper -b pywal -w null
 ```
 > In this case, the wallpaper will not be used.
 
+#### To restart waybar, use the -r flag.
+
+```bash
+walugen -r # ...
+```
+
 ## features in the future
 
 **.ini config** - To create your own backends and settings.
