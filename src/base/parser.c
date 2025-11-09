@@ -110,12 +110,10 @@ int validation(void)
         if (path_testing == 1)
         {
             swww_wallpaper_update(Arguments.path);
-            exit(EXIT_SUCCESS);
         }
         else if (path_testing == 2)
         {
-            //swww_random_wallpaper_update(Arguments.path);
-            exit(EXIT_SUCCESS);
+            swww_random_wallpaper_update(Arguments.path);
         }
     }
     else if (strcmp(Arguments.wallpaper_backend, "swaybg") == 0)
@@ -123,19 +121,17 @@ int validation(void)
         if (path_testing == 1)
         {
             swaybg_wallpaper_update(Arguments.path);
-            exit(EXIT_SUCCESS);
         }
         else if (path_testing == 2)
         {
-            //swaybg_random_wallpaper_update(Arguments.path);
-            exit(EXIT_SUCCESS);
+            swaybg_random_wallpaper_update(Arguments.path);
         }
     }
     else w_error(EXIT_FAILURE, WALLPAPER_SECT, ERROR_UNKNOWN_WALLPAPER_BACKEND);
 
     if (Arguments.reload == 1)
         reloading();
-
+    
     return 0;
 }
 

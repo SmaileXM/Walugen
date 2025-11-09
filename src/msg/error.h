@@ -13,6 +13,7 @@
 #define ERROR_UNKNOWN_ARGUMENT "Unknown argument\n"
 #define ERROR_PROGRAM_NOT_FOUND "Program %s not found\n"
 #define ERROR_COLORS_UPDATE "Failed to update colors\n"
+#define ERROR_WALLPAPER_UPDATE "Failed to update wallpapers\n"
 #define ERROR_OPEN_DIR "Failed to open directory\n"
 
 #endif

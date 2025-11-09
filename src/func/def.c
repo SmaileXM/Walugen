@@ -3,6 +3,7 @@
 #include "../msg/info.h"
 #include "../msg/log.h"
 
+#include <time.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -48,13 +49,17 @@ int program_testing(const char *prg)
 
 int systemv(const char *cmd, ...)
 {
-    size_t len = strlen(cmd);
-    size_t buf = len + 40;
-    char *cmd_buf = malloc(buf);
-
     va_list arg;
     va_start(arg, cmd);
-    vsnprintf(cmd_buf, buf, cmd, arg);
+
+    va_list argc;
+    va_copy(argc, arg);
+    int buf = vsnprintf(NULL, 0, cmd, argc);
+    va_end(argc);
+
+
+    char *cmd_buf = malloc(buf + 1);
+    vsnprintf(cmd_buf, buf + 1, cmd, arg);
     va_end(arg);
 
     if (system(cmd_buf) != 0)
@@ -62,4 +67,40 @@ int systemv(const char *cmd, ...)
 
     free(cmd_buf);
     return 0;
+}
+
+char *random_file(const char *dir)
+{
+    DIR *path = opendir(dir);
+    char *list[1000];
+    int count = 0;
+
+    if (!dir) return NULL;
+
+    struct dirent *entry;
+
+    while ((entry = readdir(path)) != NULL && count < 1000)
+    {
+        if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0)
+        {
+            list[count++] = strdup(entry->d_name);
+        }
+    }
+    closedir(path);
+
+    if (count == 0) return NULL;
+
+    srand(time(NULL));
+
+    int idx = rand() % count;
+
+    size_t buffer = strlen(dir) + 1 + strlen(list[idx]) + 1;
+    char *file = malloc(buffer);
+
+    snprintf(file, buffer, "%s/%s", dir, list[idx]);
+    if (wallpaper) return strdup(wallpaper);
+
+
+    wallpaper = strdup(file);
+    return strdup(file);
 }
