@@ -5,5 +5,6 @@
 
 #define WARN_IGNOR_BACKEND "Skipping the backend...\n"
 #define WARN_IGNOR_WALLPAPER_BACKEND "Skipping the wallpaper backend...\n"
+#define WARN_ANIMATION "An animation that doesn't exist is specified! The simple animation will be used.\n"
 
 #endif

@@ -4,8 +4,6 @@
 #include "../../msg/error.h"
 #include "../../msg/info.h"
 
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 int pywal_colors_update(const char *path)

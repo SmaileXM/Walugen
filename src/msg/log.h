@@ -13,6 +13,7 @@
 #define INPUT_SECT "input"
 #define TEST_SECT "testing"
 #define RELOAD_SECT "reloading"
+#define ANIMATION_SECT "animation"
 
 #define HELP_MSG    "Walugen v0.0.4 By SmaileXM\n"\
                     "\n-h,--help                           Print help"\
@@ -21,6 +22,8 @@
                     "\n-w,--wallbackend <backend or null>  Flag for specifying the wallpaper backend"\
                     "\n-i,--input <path>                   Flag for specifying the path"\
                     "\n-r,--reload                         Flag to reload the waybar (Later for other things)"\
+                    "\n-a,--animation <animation>          Flag to specify animation for swww"\
+                    "\nAnimations: simple,wave,wipe,outer,center."\
                     "\n\nSource code: https://github.com/SmaileXM/Walugen.git"\
                     "\nVersion data: 2025.11.08\n"
 

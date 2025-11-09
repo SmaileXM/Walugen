@@ -51,6 +51,21 @@ walugen -i wallpaper -b pywal -w null
 walugen -r # ...
 ```
 
+#### To specify the animation type for swww, use the -a flag. [BETA]
+
+* Animations
+    + simple - base animation
+    + wave
+    + wipe
+    + outer
+    + center
+
+```bash
+walugen -a Animation
+```
+
+> This feature is not fully developed.
+
 ## features in the future
 
 **.ini config** - To create your own backends and settings.

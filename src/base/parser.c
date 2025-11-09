@@ -68,6 +68,12 @@ int parser(int argc, char **argv)
         }
         else if (strcmp(argv[i], "-r") == 0 || strcmp(argv[i], "--reload") == 0)
             Arguments.reload = 1;
+
+        else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--animation") == 0)
+        {
+            Arguments.animation = argv[i + 1];
+            i++;
+        }
         else
         {
             msg(MSG_TYPE_USAGE);
@@ -81,9 +87,21 @@ int validation(void)
 {
     struct Arguments;
     int path_testing = path_check(Arguments.path);
+    char *animation = swww_get_anim(Arguments.animation);
+    Arguments.animation_cmd = animation;
 
     if (path_testing == -1) 
         w_error(EXIT_FAILURE, TEST_SECT, ERROR_FILE_NOT_FOUND);
+
+    if (animation == NULL)
+    {
+        Arguments.animation_cmd = strdup("--transition-type=simple");
+        w_warn(ANIMATION_SECT, WARN_ANIMATION);
+    }
+    
+
+    if (Arguments.animation == NULL)
+        Arguments.animation = "simple";
 
     w_info(WALLPAPER_SECT, INFO_PATH_SET, Arguments.path);
 
@@ -109,11 +127,11 @@ int validation(void)
     {
         if (path_testing == 1)
         {
-            swww_wallpaper_update(Arguments.path);
+            swww_wallpaper_update(Arguments.animation_cmd, Arguments.path);
         }
         else if (path_testing == 2)
         {
-            swww_random_wallpaper_update(Arguments.path);
+            swww_random_wallpaper_update(Arguments.animation_cmd, Arguments.path);
         }
     }
     else if (strcmp(Arguments.wallpaper_backend, "swaybg") == 0)
@@ -132,6 +150,7 @@ int validation(void)
     if (Arguments.reload == 1)
         reloading();
     
+    free(Arguments.animation_cmd);
     return 0;
 }
 
